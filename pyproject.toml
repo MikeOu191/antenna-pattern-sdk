@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "antenna-pattern-sdk"
+version = "0.1.0"
+description = "A robust Python SDK for parsing, analyzing, and visualizing antenna measurement CSV files."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "MikeOu191" }]
+keywords = ["antenna", "csv", "polar-plot", "sdk", "measurement"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "numpy>=1.24.0",
+]
+
+[project.optional-dependencies]
+export = [
+    "matplotlib>=3.7.0",
+    "scipy>=1.10.0",
+    "python-pptx>=0.8.11",
+]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "mypy>=1.0.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
