@@ -1,7 +1,7 @@
 # Antenna Pattern SDK: From Business Logic to Clean Architecture 📡
 
 This project is not just a parser; it is a **showcase of software engineering evolution**. 
-It demonstrates how I translated complex, real-world client requirements (Antenna Measurement CSV Analysis) into a structured, 15-step workflow, and subsequently refactored it from a monolithic script into a robust, layered SDK.
+It demonstrates how I translated complex, real-world client requirements (Antenna Measurement CSV Analysis) into a structured, 15-step workflow, and subsequently refactored it from a monolithic script into a robust, layered SDK with multiple interface options.
 
 ---
 
@@ -35,8 +35,15 @@ I refactored the codebase into a **Modular SDK** following the **Separation of C
 
 1.  **Data Layer (`models.py`)**: Defined strict `dataclasses` (`ParsedCSV`, `AntennaMeasurement`) to replace unstructured dictionaries.
 2.  **Core Logic Layer (`parser.py`, `analyzer.py`)**: Isolated the 15 Actions into focused classes. The core now depends only on `numpy`.
-3.  **Presentation Layer (`exporters/`)**: Implemented the **Open/Closed Principle**. Heavy dependencies (`matplotlib`, `python-pptx`) are lazy-loaded. Adding a new format (e.g., Word) requires zero changes to the core logic.
+3.  **Presentation Layer (`exporters/`)**: Implemented the **Open/Closed Principle**. Heavy dependencies (`matplotlib`, `scipy`, `python-pptx`) are lazy-loaded. Adding a new format (e.g., Word) requires zero changes to the core logic.
 
 ---
 
-## 📂 3. Project Structure
+## 🖥️ 3. Multiple Interfaces & Demos
+
+To cater to different usage scenarios (Automation, Quick Demo, Deep Analysis), the SDK provides three ways to interact:
+
+### A. Command Line Interface (CLI) - For Automation
+Standard script execution for batch processing.
+```bash
+python examples/basic_usage.py input.csv output.pptx
